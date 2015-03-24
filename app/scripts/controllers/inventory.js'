@@ -1,0 +1,106 @@
+'use strict';
+
+/**
+ * @ngdoc function
+ * @name pacgApp.controller:InventoryCtrl
+ * @description
+ * # InventoryCtrl
+ * Controller of the pacgApp
+ */
+angular.module('pacgApp')
+  .controller('InventoryCtrl', function ($scope,$http) {
+
+  var character = 1;
+
+  var inventoryOrder=["Weapon","Armor","Spell","Item","Ally","Blessing"];
+
+  angular.forEach(inventoryOrder, function (value, key) {
+    $http.get('http://it-nolan-dfctools.dfplainville.com/pricemanagementsystem/PACG/cards.php',{params:{'action':'inventory','type':value,'character':character}})
+    .success(function(res){
+      console.log(res);
+      if (value === "Weapon")
+        $scope.weapons=res;
+      if (value === "Armor")
+        $scope.armors=res;
+      if (value === "Spell")
+        $scope.spells=res;
+      if (value === "Item")
+        $scope.items=res;
+      if (value === "Ally")
+        $scope.allies=res;
+      if (value === "Blessing")
+        $scope.blessings=res;
+    })
+    .error(function(res){
+      console.error(res);
+    });
+  });
+  
+  angular.forEach(inventoryOrder, function (value, key) {
+    $http.get('http://it-nolan-dfctools.dfplainville.com/pricemanagementsystem/PACG/cards.php',{params:{'action':'cardsALL','type':value}})
+    .success(function(res){
+      if (value === "Weapon")
+        $scope.weaponsALL=res;
+      if (value === "Armor")
+        $scope.armorsALL=res;
+      if (value === "Spell")
+        $scope.spellsALL=res;
+      if (value === "Item")
+        $scope.itemsALL=res;
+      if (value === "Ally")
+        $scope.alliesALL=res;
+      if (value === "Blessing")
+        $scope.blessingsALL=res;
+    })
+    .error(function(res){
+      console.error(res);
+    });
+  });
+
+  $scope.inventoryAdjust = function(card_id,action){
+    if (action=="inventoryAdd"){
+      if (card_id=="weapon")
+        card_id=$scope.weaponsADD;
+      elseif (card_id=="armor")
+        card_id=$scope.armorsADD;
+      elseif (card_id=="spell")
+        card_id=$scope.spellsADD;
+      elseif (card_id=="item")
+        card_id=$scope.itemsADD;
+      elseif (card_id=="ally")
+        card_id=$scope.alliesADD;
+      elseif (card_id=="blessing")
+        card_id=$scope.blessingsADD;
+    }
+    console.log(card_id);
+    $http.get('http://it-nolan-dfctools.dfplainville.com/pricemanagementsystem/PACG/cards.php',{params:{'action':action,'card_id':card_id,'character_id':character}})
+    .success(function(res){
+      console.log(res);
+      
+      angular.forEach(inventoryOrder, function (value, key) {
+        $http.get('http://it-nolan-dfctools.dfplainville.com/pricemanagementsystem/PACG/cards.php',{params:{'action':'inventory','type':value,'character':character}})
+        .success(function(res){
+          if (value === "Weapon")
+            $scope.weapons=res;
+          if (value === "Armor")
+            $scope.armors=res;
+          if (value === "Spell")
+            $scope.spells=res;
+          if (value === "Item")
+            $scope.items=res;
+          if (value === "Ally")
+            $scope.allies=res;
+          if (value === "Blessing")
+            $scope.blessings=res;
+        })
+        .error(function(res){
+          console.error(res);
+        });
+      });      
+    })
+    .error(function(res){
+      console.error(res);
+    });
+  };
+
+});

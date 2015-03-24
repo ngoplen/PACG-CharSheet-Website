@@ -1,0 +1,92 @@
+<div class="row">
+	<img src="/images/characters-full/{{character_id}}.jpg" class="visible-lg visible-md col-md-4">
+	<div class="col-md-8">
+		<div class="row">
+			<div class="panel panel-default col-md-6">
+			<!-- Default panel contents -->
+				<div class="panel-heading">Class 0 Ships</div>
+				<!-- List group -->
+				<ul class="list-group">
+				<li ng-repeat="ship in class0" class="list-group-item row">
+					<button ng-click="fleetUpdate('{{ship.id}}','{{ship.attribute}}','class0')" ng-if="ship.active==='f'" class="btn-xs"><span class="glyphicon glyphicon-ok"></span></button><span ng-if="ship.active==='t'" class="glyphicon glyphicon-ok"></span> {{ship.name}}
+				</li>
+			</div>
+			<div class="panel panel-default col-md-6">
+			<!-- Default panel contents -->
+				<div class="panel-heading">Class 1 Ships</div>
+				<!-- List group -->
+				<ul class="list-group">
+					<li ng-repeat="ship in class1" class="list-group-item">
+						<button ng-click="fleetUpdate('{{ship.id}}','{{ship.attribute}}','class1')" ng-if="ship.active==='f'" class="btn-xs"><span class="glyphicon glyphicon-ok"></span></button><span ng-if="ship.active==='t'" class="glyphicon glyphicon-ok"></span> {{ship.name}}
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="panel panel-default col-md-6">
+			<!-- Default panel contents -->
+				<div class="panel-heading">Class 2 Ships</div>
+				<!-- List group -->
+				<ul class="list-group">
+					<li ng-repeat="ship in class2" class="list-group-item">
+						<button ng-click="fleetUpdate('{{ship.id}}','{{ship.attribute}}','class2')" ng-if="ship.active==='f'" class="btn-xs"><span class="glyphicon glyphicon-ok"></span></button><span ng-if="ship.active==='t'" class="glyphicon glyphicon-ok"></span> {{ship.name}}
+					</li>
+				</ul>
+			</div>
+			<div class="panel panel-default col-md-6">
+			<!-- Default panel contents -->
+				<div class="panel-heading">Class 3 Ships</div>
+				<!-- List group -->
+				<ul class="list-group">
+					<li ng-repeat="ship in class3" class="list-group-item">
+						<button ng-click="fleetUpdate('{{ship.id}}','{{ship.attribute}}','class3')" ng-if="ship.active==='f'" class="btn-xs"><span class="glyphicon glyphicon-ok"></span></button><span ng-if="ship.active==='t'" class="glyphicon glyphicon-ok"></span> {{ship.name}}
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+                     <div class="panel panel-default col-md-6">
+                     <!-- Default panel contents -->
+                             <div class="panel-heading">Class 4 Ships</div>
+                             <!-- List group -->
+                             <ul class="list-group">
+                                     <li ng-repeat="ship in class4" class="list-group-item">
+                                     	<button ng-click="fleetUpdate('{{ship.id}}','{{ship.attribute}}','class4')" ng-if="ship.active==='f'" class="btn-xs"><span class="glyphicon glyphicon-ok"></span></button><span ng-if="ship.active==='t'" class="glyphicon glyphicon-ok"></span> {{ship.name}}
+                                     </li>
+                             </ul>
+                     </div>
+                     <div class="panel panel-default col-md-6">
+                     <!-- Default panel contents -->
+                             <div class="panel-heading">Class 5 Ships</div>
+                             <!-- List group -->
+                             <ul class="list-group">
+                                     <li ng-repeat="ship in class5" class="list-group-item">
+                                     	<button ng-click="fleetUpdate('{{ship.id}}','{{ship.attribute}}','class5')" ng-if="ship.active==='f'" class="btn-xs"><span class="glyphicon glyphicon-ok"></span></button><span ng-if="ship.active==='t'" class="glyphicon glyphicon-ok"></span> {{ship.name}}
+                                     </li>
+                             </ul>
+                     </div>
+             </div><div class="row">
+                     <div class="panel panel-default col-md-6">
+                     <!-- Default panel contents -->
+                             <div class="panel-heading">Class 6 Ships</div>
+                             <!-- List group -->
+                             <ul class="list-group">
+                                     <li ng-repeat="ship in class6" class="list-group-item">
+                                     	<button ng-click="fleetUpdate('{{ship.id}}','{{ship.attribute}}','class6')" ng-if="ship.active==='f'" class="btn-xs"><span class="glyphicon glyphicon-ok"></span></button><span ng-if="ship.active==='t'" class="glyphicon glyphicon-ok"></span> {{ship.name}}
+                                     </li>
+                             </ul>
+                     </div>
+                     <div class="panel panel-default col-md-6">
+                     <!-- Default panel contents -->
+                             <div class="panel-heading">Class 7 Ships</div>
+                             <!-- List group -->
+                             <ul class="list-group">
+                                     <li ng-repeat="ship in class7" class="list-group-item"> 
+                                     	<button ng-click="fleetUpdate('{{ship.id}}','{{ship.attribute}}','class7')" ng-if="ship.active==='f'" class="btn-xs"><span class="glyphicon glyphicon-ok"></span></button><span ng-if="ship.active==='t'" class="glyphicon glyphicon-ok"></span> {{ship.name}}
+                                     </li>
+                             </ul>
+                     </div>
+             </div>
+	</div>
+</div>

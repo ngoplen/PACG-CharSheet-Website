@@ -1,0 +1,117 @@
+'use strict';
+
+/**
+ * @ngdoc function
+ * @name pacgApp.controller:FleetCtrl
+ * @description
+ * # FleetCtrl
+ * Controller of the pacgApp
+ */
+angular.module('pacgApp')
+  .controller('FleetCtrl', function ($scope,$http) {
+  
+  var character = 1
+  $http.get('http://it-nolan-dfctools.dfplainville.com/pricemanagementsystem/PACG/cards.php',{params:{'action':'getShipClasses'}})
+    .success(function(res){
+      var shipClasses=res;
+      console.log(shipClasses);
+      for (var attribute in shipClasses) {
+            console.log("HI");/*
+            $http.get('http://it-nolan-dfctools.dfplainville.com/pricemanagementsystem/PACG/cards.php',{params:{'action':'fleet','character':character,'attribute':attribute}})
+            .success(function(res){
+              $scope.class0=res;
+            })
+            .error(function(res){
+              console.error(res);
+            });fred*/
+      }
+    })
+    .error(function(res){
+      console.error(res);
+    });
+  /*
+  $http.get('http://it-nolan-dfctools.dfplainville.com/pricemanagementsystem/PACG/cards.php',{params:{'action':'fleet','character':character,'attribute':'30'}})
+    .success(function(res){
+      $scope.class0=res;
+    })
+    .error(function(res){
+      console.error(res);
+  });
+    
+  $http.get('http://it-nolan-dfctools.dfplainville.com/pricemanagementsystem/PACG/cards.php',{params:{'action':'fleet','character':character,'attribute':'31'}})
+    .success(function(res){
+      $scope.class1=res;
+    })
+    .error(function(res){
+      console.error(res);
+  });
+
+  $http.get('http://it-nolan-dfctools.dfplainville.com/pricemanagementsystem/PACG/cards.php',{params:{'action':'fleet','character':character,'attribute':'32'}})
+    .success(function(res){
+      $scope.class2=res;
+    })
+    .error(function(res){
+      console.error(res);
+  });
+
+  $http.get('http://it-nolan-dfctools.dfplainville.com/pricemanagementsystem/PACG/cards.php',{params:{'action':'fleet','character':character,'attribute':'33'}})
+    .success(function(res){
+      $scope.class3=res;
+    })
+    .error(function(res){
+      console.error(res);
+  });
+
+  $http.get('http://it-nolan-dfctools.dfplainville.com/pricemanagementsystem/PACG/cards.php',{params:{'action':'fleet','character':character,'attribute':'34'}})
+    .success(function(res){
+      $scope.class4=res;
+    })
+    .error(function(res){
+      console.error(res);
+  });
+
+  $http.get('http://it-nolan-dfctools.dfplainville.com/pricemanagementsystem/PACG/cards.php',{params:{'action':'fleet','character':character,'attribute':'35'}})
+    .success(function(res){
+      $scope.class5=res;
+    })
+    .error(function(res){
+      console.error(res);
+  });
+
+  $http.get('http://it-nolan-dfctools.dfplainville.com/pricemanagementsystem/PACG/cards.php',{params:{'action':'fleet','character':character,'attribute':'36'}})
+    .success(function(res){
+      $scope.class6=res;
+    })
+    .error(function(res){
+      console.error(res);
+  });
+
+  $http.get('http://it-nolan-dfctools.dfplainville.com/pricemanagementsystem/PACG/cards.php',{params:{'action':'fleet','character':character,'attribute':'37'}})
+    .success(function(res){
+      $scope.class7=res;
+    })
+    .error(function(res){
+      console.error(res);
+  });
+  */
+  
+  $scope.fleetUpdate = function (card,attribute,shipClass) {
+    $http.get('http://it-nolan-dfctools.dfplainville.com/pricemanagementsystem/PACG/cards.php',{params:{'action':'fleetUpdate','card':card}})
+    .success(function(res){
+      console.log(res);
+      $http.get('http://it-nolan-dfctools.dfplainville.com/pricemanagementsystem/PACG/cards.php',{params:{'action':'fleet','character':character,'attribute':attribute}})
+      .success(function(res){
+        $scope.class5=res;
+      })
+      .error(function(res){
+        console.error(res);
+      });
+    })
+    .error(function(res){
+      console.error(res);
+    });
+
+  };
+                                                                                                                                                
+
+});

@@ -1,0 +1,832 @@
+
+*** These modified files were found in JOE when it aborted on Sat Feb 21 11:48:49 2015
+*** JOE was aborted by UNIX signal 15
+
+*** File '(Unnamed)'
+post
+max_input_vars
+localhost
+pacg
+</p>
+viewport
+word
+default
+alias j=
+wordwrap
+
+*** File '(Unnamed)'
+inventory.js
+inventory.js
+powers.js
+progress.js
+progress.js
+skills.js
+skills.js
+main.js
+main.js
+main.js
+views/progress.html
+views/progress.html
+views/progress.html
+
+*** These modified files were found in JOE when it aborted on Mon Feb 23 06:10:18 2015
+*** JOE was aborted because the terminal closed
+
+*** File '(Unnamed)'
+wordwrap
+autoindent
+autoindent
+autoindent
+autoindent
+autoindent
+autoindent
+autoindent
+autoindent
+autoindent
+autoindent
+autoindent
+autoindent
+
+*** File '(Unnamed)'
+root
+root
+root
+root
+root
+root
+root
+root
+root
+root
+root
+root
+root
+
+*** File '(Unnamed)'
+post
+max_input_vars
+localhost
+pacg
+</p>
+viewport
+word
+default
+alias j=
+wordwrap
+
+*** File '(Unnamed)'
+inventory.html
+inventory.html
+inventory.html
+inventory.html
+inventory.html
+inventory.html
+inventory.html
+progress.html
+inventory.html
+inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+
+*** These modified files were found in JOE when it aborted on Mon Feb 23 06:10:29 2015
+*** JOE was aborted because the terminal closed
+
+*** File '(Unnamed)'
+autoindent
+
+*** File '(Unnamed)'
+root
+
+*** File '(Unnamed)'
+post
+max_input_vars
+localhost
+pacg
+</p>
+viewport
+word
+default
+alias j=
+wordwrap
+
+*** File '(Unnamed)'
+inventory.html
+inventory.html
+inventory.html
+inventory.html
+inventory.html
+inventory.html
+inventory.html
+progress.html
+inventory.html
+inventory.html
+scripts/controllers/inventory.js
+scripts/controllers/inventory.js
+scripts/controllers/inventory.js
+scripts/controllers/inventory.js
+scripts/controllers/inventory.js
+scripts/controllers/inventory.js
+scripts/controllers/inventory.js
+scripts/controllers/inventory.js'
+scripts/controllers/inventory.js
+scripts/controllers/inventory.js
+scripts/controllers/inventory.js
+scripts/controllers/inventory.js
+scripts/controllers/inventory.js
+scripts/controllers/inventory.js
+
+*** These modified files were found in JOE when it aborted on Tue Feb 24 06:44:52 2015
+*** JOE was aborted because the terminal closed
+
+*** File '(Unnamed)'
+autoindent
+wordwrap
+
+*** File '(Unnamed)'
+root
+root
+
+*** File '(Unnamed)'
+post
+max_input_vars
+localhost
+pacg
+</p>
+viewport
+word
+default
+alias j=
+wordwrap
+
+*** File '(Unnamed)'
+views/signup.html
+views/signup.html
+views/signup.html
+views/signup.html
+views/signup.html
+views/signup.html
+scripts/app
+scripts/app.js
+scripts/app.js
+scripts/app.js
+index.html
+index.html
+
+*** These modified files were found in JOE when it aborted on Tue Feb 24 11:16:28 2015
+*** JOE was aborted by UNIX signal 1
+
+*** File '(Unnamed)'
+wordwrap
+
+*** File '(Unnamed)'
+root
+
+*** File '(Unnamed)'
+max_input_vars
+localhost
+pacg
+</p>
+viewport
+word
+default
+alias j=
+wordwrap
+userApp
+
+*** File '(Unnamed)'
+index.html
+views/about.html
+views/about.html
+views/about.html
+views/about.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/inventory.html
+views/account.html
+views/login.html
+views/login.html
+views/login.html
+views/login.html
+views/login.html
+views/login.html
+views/login.html
+views/login.html
+views/login.html
+views/login.html
+views/login.html
+views/login.html
+views/login.html
+views/login.html
+views/login.html
+views/login.html
+views/login.html
+views/login.html
+views/login.html
+
+*** These modified files were found in JOE when it aborted on Mon Mar  2 13:45:27 2015
+*** JOE was aborted because the terminal closed
+
+*** File 'scripts/controllers/skills.js'
+'use strict';
+
+/**
+ * @ngdoc function
+ * @name pacgApp.controller:SkillsCtrl
+ * @description
+ * # SkillsCtrl
+ * Controller of the pacgApp
+ */
+angular.module('pacgApp')
+  .controller('SkillsCtrl', function ($scope,$http,$cookies,$location) {
+  
+  var username = $cookies.username;
+  var session_id = $cookies.session_id;
+  $http.get(API_PATH + 'account.php',{params:{'action':'validate','username':username,'session_id':session_id}})
+    .success(function(session_result){
+      if (session_result[0].success === "true"){//
+        $http.get(API_PATH + 'skills.php',{params:{'skill':'Strength','character':session_result[0].active_character_id}})
+          .success(function(res){
+            $scope.strength=res;
+          })
+          .error(function(res){
+            console.error(res);
+        });
+
+        $http.get(API_PATH + 'skills.php',{params:{'skill':'Dexterity','character':session_result[0].active_character_id}})
+          .success(function(res){
+            $scope.dexterity=res;
+          })
+          .error(function(res){
+            console.error(res);
+        });
+
+        $http.get(API_PATH + 'skills.php',{params:{'skill':'Constitution','character':session_result[0].active_character_id}})
+          .success(function(res){
+            $scope.constitution=res;
+          })
+          .error(function(res){
+            console.error(res);
+        });
+
+        $http.get(API_PATH + 'skills.php',{params:{'skill':'Intelligence','character':session_result[0].active_character_id}})
+          .success(function(res){
+            $scope.intelligence=res;
+          })
+          .error(function(res){
+            console.error(res);
+        });
+
+        $http.get(API_PATH + 'skills.php',{params:{'skill':'Wisdom','character':session_result[0].active_character_id}})
+          .success(function(res){
+            $scope.wisdom=res;
+          })
+          .error(function(res){
+            console.error(res);
+        });
+
+        $http.get(API_PATH + 'skills.php',{params:{'skill':'Charisma','character':session_result[0].active_character_id}})
+          .success(function(res){
+            $scope.charisma=res;
+          })
+          .error(function(res){
+            console.error(res);
+        });
+      
+      }
+      else{  //redirect to login page, NO MATCHY MATCHY
+        //$location.path('#/login');
+        console.log(session_result);
+      }
+    })
+    .error(function(session_result){
+    
+  });
+  
+});
+
+*** File '(Unnamed)'
+localhost
+pacg
+</p>
+viewport
+word
+default
+alias j=
+wordwrap
+userApp
+ng-show
+
+*** File '(Unnamed)'
+scripts/controllers/login.js
+scripts/controllers/login.js
+scripts/controllers/signup.js
+scripts/controllers/login.js
+scripts/controllers/login.js
+scripts/controllers/login.js
+scripts/controllers/login.js
+scripts/controllers/login.js
+scripts/controllers/login.js
+scripts/controllers/login.js
+scripts/controllers/skills.js
+scripts/controllers/skills.js
+scripts/controllers/skills.js
+
+*** These modified files were found in JOE when it aborted on Wed Mar  4 13:45:44 2015
+*** JOE was aborted by UNIX signal 1
+
+*** File '(Unnamed)'
+autoindent
+
+*** File '(Unnamed)'
+root
+
+*** File 'index.html'
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="pacgApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="header">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="#/">PACG</a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="js-navbar-collapse" ng-controller="HeaderCtrl">
+
+            <ul class="nav navbar-nav">
+              <li ng-class="{ active: isActive('/account') }"><a href="#/account"><span class="glyphicon glyphicon-user"></span> Account</a></li>
+              <li ng-class="{ active: isActive('/login') }"><a href="#/login"><span class="glyphicon glyphicon-user"></span> Log in</a></li>
+              <li ng-class="{ active: isActive('/character') }" role="presentation" class="dropdown">
+              	<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-expanded="false">
+              		<span class="glyphicon glyphicon-book"></span> Lirianne - S&S <span class="caret"></span>
+              	</a>
+              	<ul class="dropdown-menu" role="menu">
+              		<li><a ng-href="#/skills">Skills</a></li>
+              		<li><a ng-href="#/powers">Powers</a></li>
+              		<li><a ng-href="#/cards">Card Feats</a></li>
+                        <li><a ng-href="#/inventory">Inventory</a></li>
+                        <li><a ng-href="#/progress">Progress</a></li>
+                        <li><a ng-href="#/fleet">Fleet</a></li>
+              	</ul>
+              </li>
+              <li ng-class="{ active: isActive('/extras') }" role="presentation" class="dropdown">
+              	<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-expanded="false">
+              		<span class="glyphicon glyphicon-tower"></span> Extras <span class="caret"></span>
+              	</a>
+              	<ul class="dropdown-menu" role="menu">
+              		<li><a ng-href="#/diceRoller">Dice roller</a></li>
+                        <li><a ng-href="#/plunderRoller">Plunder Roller</a></li>
+                        <li><a ng-href="#/summon">Summon</a></li>
+			<li><a ng-href="#/cardAdd">Suggest a Card</a></li>
+                        <li><a ng-href="#/reference">Reference Sheet</a></li>
+                        <li><a ng-href="#/rulebook">Rulebook</a></li>
+              	</ul>
+              </li>
+              <li ng-class="{ active: isActive('/about') }"><a href="#/about"><span class="glyphicon glyphicon-question"></span> About</a></li>
+              <li><a href="#" ng-click="logout()">Log out</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+    <div ng-view=""></div>
+    </div>
+
+    <div class="footer" style="margin-top:10px;">
+      <div class="container">
+        <p class="col-md-8"><span class="glyphicon glyphicon-usd"></span>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post"
+target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="encrypted" value="-----BEGIN
+PKCS7-----MIIHTwYJKoZIhvcNAQcEoIIHQDCCBzwCAQExggEwMIIBLAIBADCBlDCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20CAQAwDQYJKoZIhvcNAQEBBQAEgYCdkq7s+x5Op/Nd63ADsS9H3f0a1sWD3ByXNWOn25+0rnES1To8Os/vxAMlwS/+bYgDqm97jwwSyPdslIrig+4ze8s5c5vVEIxQO8xLR4kiM3Pn6+bbYkFPl6yZwMKQG3Bt+4PgNoaNcX5V7wM6l+4nz/UQxA4hwqNtA8a1w/Z6qTELMAkGBSsOAwIaBQAwgcwGCSqGSIb3DQEHATAUBggqhkiG9w0DBwQIdZqwetT6q1GAgagO/npIhBe4sxHDO7VPjO8u2a2VUTlfBYTPqeO+DiePYiTwMXJ2N8kpEjuD3qZXoUvUtvNxnv/eX8Xjs5Z9HjnHl4WcZUBu9G4abbjIgHj47JCMR+/R9MGOgtuUg0j04bvzFsfSfwzJPI6J9tF711RWFn331oNmCe6zAruA1dtqv8mUSPrzOSQrExLvCShzSGIsrmxleKm0UHidL2BgozHoN/c7u2hUG1ygggOHMIIDgzCCAuygAwIBAgIBADANBgkqhkiG9w0BAQUFADCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20wHhcNMDQwMjEzMTAxMzE1WhcNMzUwMjEzMTAxMzE1WjCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAMFHTt38RMxLXJyO2SmS+Ndl72T7oKJ4u4uw+6awntALWh03PewmIJuzbALScsTS4sZoS1fKciBGoh11gIfHzylvkdNe/hJl66/RGqrj5rFb08sAABNTzDTiqqNpJeBsYs/c2aiGozptX2RlnBktH+SUNpAajW724Nv2Wvhif6sFAgMBAAGjge4wgeswHQYDVR0OBBYEFJaffLvGbxe9WT9S1wob7BDWZJRrMIG7BgNVHSMEgbMwgbCAFJaffLvGbxe9WT9S1wob7BDWZJRroYGUpIGRMIGOMQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExFjAUBgNVBAcTDU1vdW50YWluIFZpZXcxFDASBgNVBAoTC1BheVBhbCBJbmMuMRMwEQYDVQQLFApsaXZlX2NlcnRzMREwDwYDVQQDFAhsaXZlX2FwaTEcMBoGCSqGSIb3DQEJARYNcmVAcGF5cGFsLmNvbYIBADAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBQUAA4GBAIFfOlaagFrl71+jq6OKidbWFSE+Q4FqROvdgIONth+8kSK//Y/4ihuE4Ymvzn5ceE3S/iBSQQMjyvb+s2TWbQYDwcp129OPIbD9epdr4tJOUNiSojw7BHwYRiPh58S1xGlFgHFXwrEBb3dgNbMUa+u4qectsMAXpVHnD9wIyfmHMYIBmjCCAZYCAQEwgZQwgY4xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLUGF5UGFsIEluYy4xEzARBgNVBAsUCmxpdmVfY2VydHMxETAPBgNVBAMUCGxpdmVfYXBpMRwwGgYJKoZIhvcNAQkBFg1yZUBwYXlwYWwuY29tAgEAMAkGBSsOAwIaBQCgXTAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0xNTAzMDQyMTQ0MDBaMCMGCSqGSIb3DQEJBDEWBBQRutJC8SzdoMte16ss6gEcJKMeUzANBgkqhkiG9w0BAQEFAASBgJL25L1habPCoJU0Vc1q6tWMbTrylh3Z7GG0xVrXAuesne1iBj</p>
+	<img class="col-md-4 visible-lg visible-md" src="/images/logos/PACG.png">
+      </div>
+    </div>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/account.js"></script>
+        <script src="scripts/controllers/character.js"></script>
+        <script src="scripts/controllers/extras.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/skills.js"></script>
+        <script src="scripts/controllers/powers.js"></script>
+        <script src="scripts/controllers/cards.js"></script>
+        <script src="scripts/controllers/inventory.js"></script>
+        <script src="scripts/controllers/progress.js"></script>
+        <script src="scripts/controllers/feats.js"></script>
+        <script src="scripts/controllers/fleet.js"></script>
+        <script src="scripts/controllers/diceroller.js"></script>
+        <script src="scripts/controllers/plunderroller.js"></script>
+        <script src="scripts/controllers/summon.js"></script>
+        <script src="scripts/controllers/reference.js"></script>
+        <script src="scripts/controllers/rulebook.js"></script>
+        <script src="scripts/controllers/header.js"></script>
+        <script src="scripts/controllers/signup.js"></script>
+        <script src="scripts/controllers/cardadd.js"></script>
+        <script src="scripts/controllers/applicationcontroller.js"></script>
+        <!-- endbuild -->
+</body>
+</html>
+
+*** File '(Unnamed)'
+localhost
+pacg
+</p>
+viewport
+word
+default
+alias j=
+wordwrap
+userApp
+ng-show
+
+*** File '(Unnamed)'
+index.html
+index.html
+scripts/app.js
+scripts/app.js
+index.html
+index.html
+scripts/app.js
+scripts/app.js
+scripts/app.js
+index.html
+index.html
+
+*** These modified files were found in JOE when it aborted on Fri Mar  6 06:27:49 2015
+*** JOE was aborted because the terminal closed
+
+*** File '(Unnamed)'
+word
+default
+alias j=
+wordwrap
+userApp
+ng-show
+.run
+character
+logout
+label
+
+*** File '(Unnamed)'
+views/cards.html
+views/cards.html
+views/cards.html
+views/cards.html
+views/cards.html
+views/cards.html
+views/cards.html
+views/cards.html
+views/cards.html
+views/cards.html
+views/skills.html
+
+*** These modified files were found in JOE when it aborted on Fri Mar  6 06:27:51 2015
+*** JOE was aborted because the terminal closed
+
+*** File '(Unnamed)'
+default
+alias j=
+wordwrap
+userApp
+ng-show
+.run
+character
+logout
+label
+ng-repeat-end
+
+*** File '(Unnamed)'
+views/cards.html
+views/cards.html
+views/cards.html
+views/cards.html
+views/cards.html
+views/cards.html
+views/cards.html
+views/cards.html
+views/cards.html
+views/cards.html
+views/progress.html
+views/progress.html
+
+*** These modified files were found in JOE when it aborted on Mon Mar  9 09:20:43 2015
+*** JOE was aborted because the terminal closed
+
+*** File '(Unnamed)'
+autoindent
+autoindent
+
+*** File '(Unnamed)'
+root
+root
+
+*** File 'scripts/controllers/account.js'
+'use strict';
+
+/**
+ * @ngdoc function
+ * @name pacgApp.controller:AccountCtrl
+ * @description
+ * # AccountCtrl
+ * Controller of the pacgApp
+ */
+angular.module('pacgApp')
+  .controller('AccountCtrl', function ($scope, $http, $cookies) {
+  
+    //get list of characters added to this account
+  
+    //get list of all characters
+    $http.get(API_PATH + 'characters.php',{params:{'action':'all'}})
+      .success(function(res){
+        $scope.charactersALL=res;
+      })
+      .error(function(res){
+        console.error(res);
+    });
+
+    $http.get(API_PATH + 'sets.php',{params:{'action':'all'}})
+      .success(function(res){
+        $scope.base_sets=res;
+      })
+      .error(function(res){
+        console.error(res);
+    });  
+  
+  });
+
+*** File '(Unnamed)'
+default
+alias j=
+wordwrap
+userApp
+ng-show
+.run
+character
+logout
+label
+ng-repeat-end
+
+*** File '(Unnamed)'
+views/cards.html
+views/cards.html
+views/cards.html
+views/cards.html
+views/cards.html
+views/cards.html
+views/cards.html
+views/cards.html
+views/cards.html
+scripts/controllers/signup.js
+scripts/controllers/account.js
+
+*** These modified files were found in JOE when it aborted on Mon Mar  9 09:20:50 2015
+*** JOE was aborted because the terminal closed
+
+*** File '(Unnamed)'
+default
+alias j=
+wordwrap
+userApp
+ng-show
+.run
+character
+logout
+label
+ng-repeat-end
+
+*** File '(Unnamed)'
+views/cards.html
+views/cards.html
+views/account.html
+views/account.html
+views/account.html
+views/about.html
+views/about.html
+views/about.html
+views/about.html
+views/account.html
+views/about.html
+views/about.html
+views/about.html
+views/about.html
+views/about.html
+
+*** These modified files were found in JOE when it aborted on Sun Mar 15 12:15:27 2015
+*** JOE was aborted because the terminal closed
+
+*** File '(Unnamed)'
+default
+alias j=
+wordwrap
+userApp
+ng-show
+.run
+character
+logout
+label
+ng-repeat-end
+
+*** File '(Unnamed)'
+views/cardadd.html
+views/cardadd.html
+views/cardadd.html
+views/cardadd.html
+views/cardadd.html
+views/cardadd.html
+views/cardadd.html
+scripts/controllers/cardadd.js
+scripts/controllers/cardadd.js
+scripts/controllers/cardadd.js
+scripts/controllers/account.js
+scripts/controllers/account.js
+scripts/controllers/account.js
+scripts/controllers/account.js
+
+*** These modified files were found in JOE when it aborted on Sun Mar 15 12:15:27 2015
+*** JOE was aborted because the terminal closed
+
+*** File '(Unnamed)'
+wordwrap
+autoindent
+autoindent
+
+*** File '(Unnamed)'
+root
+root
+root
+
+*** File '(Unnamed)'
+default
+alias j=
+wordwrap
+userApp
+ng-show
+.run
+character
+logout
+label
+ng-repeat-end
+
+*** File '(Unnamed)'
+views/cardadd.html
+views/cardadd.html
+views/cardadd.html
+scripts/controllers/cardadd.js
+scripts/controllers/cardadd.js
+scripts/controllers/cardadd.js
+views/account.html
+views/account.html
+views/inventory.html
+views/cards.html
+views/account.html
+views/account.html
+views/account.html
+views/account.html
+views/account.html
+views/account.html
+views/account.html
+views/account.html
+views/account.html
+views/account.html
+views/account.html
+
+*** These modified files were found in JOE when it aborted on Thu Mar 19 07:55:33 2015
+*** JOE was aborted because the terminal closed
+
+*** File '(Unnamed)'
+.run
+character
+logout
+label
+ng-repeat-end
+account
+account
+account
+account
+dropdown
+
+*** File '(Unnamed)'
+scripts/controllers/account.js
+scripts/controllers/account.js
+styles/
+main.css
+main.css
+scripts/app.js
+scripts/controllers/header.js
+scripts/controllers/header.js
+scripts/controllers/header.js
+scripts/controllers/signup.js
+scripts/controllers/header.js
+scripts/controllers/header.js

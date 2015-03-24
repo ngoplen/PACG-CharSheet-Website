@@ -1,0 +1,18 @@
+<div class="row">
+	<img src="/images/characters-full/1.jpg" class="visible-lg visible-md col-md-4">
+	<div class="col-md-8">
+		<h1 ng-repeat="AP in AdventurePath"><span ng-class="{'glyphicon':AP.active==='t','glyphicon-ok':AP.active==='t'}"></span> {{AP.name}}</h1>
+		<div ng-repeat="A in Adventure" class="{'row':$odd}">
+			<div class="panel panel-default col-md-6">
+			<!-- Default panel contents -->
+				<div class="panel-heading"><span ng-class="{'glyphicon':A.active==='t','glyphicon-ok':A.active==='t'}"></span> {{A.name}}</div>
+				<!-- List group -->
+				<ul class="list-group">
+					<li ng-repeat="scenario in Scenario" ng-if="scenario.origin==A.origin" class="list-group-item">
+						<span ng-class="{'glyphicon':scenario.active==='t','glyphicon-ok':scenario.active==='t'}"></span> {{scenario.name}}
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

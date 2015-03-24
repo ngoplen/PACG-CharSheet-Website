@@ -1,0 +1,35 @@
+<div class="row">
+	<img src="/images/characters-full/{{character_id}}.jpg" class="col-md-4 visible-lg visible-md">
+	<ul class="list-group col-md-8">
+		<li class="list-group-item">
+			<span class="mainskill">Strength</span>
+			<span ng-repeat-start="skill in strength" ng-if="skill.subSkill == null" ng-class="{'label':1, 'label-primary':$first, 'label-success':skill.active==='t', 'label-default':skill.active==='f'}">{{skill.skill}}</span>
+			<br ng-if="skill.subSkill != null"/><span ng-repeat-end ng-if="skill.subSkill != null">{{skill.subSkill}} : {{skill.mainSkill}}  <span class="label label-primary">{{skill.skill}}</span></span>
+		</li>
+		<li class="list-group-item">
+			<span class="mainskill">Dexterity</span>
+			<span ng-repeat-start="skill in dexterity" ng-if="skill.subSkill == null" ng-class="{'label':1, 'label-primary':$first, 'label-success':skill.active==='t', 'label-default':skill.active==='f'}">{{skill.skill}}</span>
+			<br ng-if="skill.subSkill != null"/><span ng-repeat-end ng-if="skill.subSkill != null">{{skill.subSkill}} : {{skill.mainSkill}}  <span class="label label-primary">{{skill.skill}}</span></span>
+		</li>
+		<li class="list-group-item">
+			<span class="mainskill">Constitution</span>
+			<span ng-repeat-start="skill in constitution" ng-if="skill.subSkill == null" ng-class="{'label':1, 'label-primary':$first, 'label-success':skill.active==='t', 'label-default':skill.active==='f'}">{{skill.skill}}</span>
+			<br ng-if="skill.subSkill != null"/><span ng-repeat-end ng-if="skill.subSkill != null">{{skill.subSkill}} : {{skill.mainSkill}}  <span class="label label-primary">{{skill.skill}}</span></span>
+		</li>
+		<li class="list-group-item">
+			<span class="mainskill">Intelligence</span>
+			<span ng-repeat-start="skill in intelligence" ng-if="skill.subSkill == null" ng-class="{'label':1, 'label-primary':$first, 'label-success':skill.active==='t', 'label-default':skill.active==='f'}">{{skill.skill}}</span>
+			<br ng-if="skill.subSkill != null"/><span ng-repeat-end ng-if="skill.subSkill != null">{{skill.subSkill}} : {{skill.mainSkill}}  <span class="label label-primary">{{skill.skill}}</span></span>
+		</li>
+		<li class="list-group-item">
+			<span class="mainskill">Wisdom</span>
+			<span ng-repeat-start="skill in wisdom" ng-if="skill.subSkill == null" ng-class="{'label':1, 'label-primary':$first, 'label-success':skill.active==='t', 'label-default':skill.active==='f'}">{{skill.skill}}</span>
+			<br ng-if="skill.subSkill != null"/><span ng-repeat-end ng-if="skill.subSkill != null">{{skill.subSkill}} : {{skill.mainSkill}}  <span class="label label-primary">{{skill.skill}}</span></span>
+		</li>
+		<li class="list-group-item">
+			<span class="mainskill">Charisma</span>
+			<span ng-repeat-start="skill in charisma" ng-if="skill.subSkill == null" ng-class="{'label':1, 'label-primary':$first, 'label-success':skill.active==='t', 'label-default':skill.active==='f'}">{{skill.skill}}</span>
+			<br ng-if="skill.subSkill != null"/><span ng-repeat-end ng-if="skill.subSkill != null">{{skill.subSkill}} : {{skill.mainSkill}}  <span class="label label-primary">{{skill.skill}}</span></span>
+		</li>
+	</ul>
+</div>

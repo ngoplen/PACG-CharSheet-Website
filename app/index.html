@@ -1,0 +1,162 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="pacgApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="header">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="#/">PACG</a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="js-navbar-collapse" ng-controller="HeaderCtrl">
+
+            <ul class="nav navbar-nav">
+              <li ng-show="loggedIn" ng-class="{ active: isActive('/account') }"><a href="#/account"><span class="glyphicon glyphicon-user"></span> Account</a></li>
+              <li ng-show="!loggedIn" ng-class="{ active: isActive('/login') }"><a href="#/login"><span class="glyphicon glyphicon-user"></span> Log in</a></li>
+              <li ng-show="loggedIn" ng-class="{ active: isActive('/character') }" role="presentation" class="dropdown">
+              	<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-expanded="false">
+              		<span class="glyphicon glyphicon-book"></span> {{characterName}}<span class="caret"></span>
+              	</a>
+              	<ul class="dropdown-menu multi-level" role="menu">
+              		<li class="dropdown-submenu">
+              			<a tabindex="-1" href="">Characters</a>
+              			<ul class="dropdown-menu">
+              				<li tabindex="-1" ng-repeat="character in activeAccountCharacters"><a href="" ng-click="changeActiveCharacter('{{character.player_character_id}}')">{{character.name}}</a></li>
+              			</ul>
+              		</li>
+              		<li class="divider"></li>
+              		<li><a ng-href="#/skills">Skills</a></li>
+              		<li><a ng-href="#/powers">Powers</a></li>
+              		<li><a ng-href="#/cards">Card Feats</a></li>
+                        <li><a ng-href="#/inventory">Inventory</a></li>
+                        <li><a ng-href="#/progress">Progress</a></li>
+                        <li><a ng-href="#/fleet">Fleet</a></li>
+              	</ul>
+              </li>
+              <li ng-class="{ active: isActive('/extras') }" role="presentation" class="dropdown">
+              	<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-expanded="false">
+              		<span class="glyphicon glyphicon-tower"></span> Extras <span class="caret"></span>
+              	</a>
+              	<ul class="dropdown-menu" role="menu">
+              		<li><a ng-href="#/diceRoller">Dice roller</a></li>
+                        <li><a ng-href="#/plunderRoller">Plunder Roller</a></li>
+                        <li><a ng-href="#/summon">Summon</a></li>
+			<li><a ng-href="#/cardAdd">Suggest a Card</a></li>
+                        <li><a ng-href="#/reference">Reference Sheet</a></li>
+                        <li><a ng-href="#/rulebook">Rulebook</a></li>
+              	</ul>
+              </li>
+              <li ng-class="{ active: isActive('/about') }"><a href="#/about"><span class="glyphicon glyphicon-question"></span> About</a></li>
+              <li ng-show="loggedIn"><a href="#" ng-click="logout()">Log out</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+    <div ng-view=""></div>
+    </div>
+
+    <div class="footer" style="margin-top:10px;">
+      <div class="container">
+        <div class="col-md-8">
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+			<input type="hidden" name="cmd" value="_donations">
+			<input type="hidden" name="business" value="HWQ9UGWDD6ZRW">
+			<input type="hidden" name="lc" value="US">
+			<input type="hidden" name="item_name" value="PACG Online Character Sheets">
+			<input type="hidden" name="item_number" value="1337">
+			<input type="hidden" name="currency_code" value="USD">
+			<input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHosted">
+			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+		</form>
+	</div>
+	<img class="col-md-4 visible-lg visible-md" src="/images/logos/PACG.png">
+      </div>
+    </div>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/account.js"></script>
+        <script src="scripts/controllers/character.js"></script>
+        <script src="scripts/controllers/extras.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/skills.js"></script>
+        <script src="scripts/controllers/powers.js"></script>
+        <script src="scripts/controllers/cards.js"></script>
+        <script src="scripts/controllers/inventory.js"></script>
+        <script src="scripts/controllers/progress.js"></script>
+        <script src="scripts/controllers/feats.js"></script>
+        <script src="scripts/controllers/fleet.js"></script>
+        <script src="scripts/controllers/diceroller.js"></script>
+        <script src="scripts/controllers/plunderroller.js"></script>
+        <script src="scripts/controllers/summon.js"></script>
+        <script src="scripts/controllers/reference.js"></script>
+        <script src="scripts/controllers/rulebook.js"></script>
+        <script src="scripts/controllers/header.js"></script>
+        <script src="scripts/controllers/signup.js"></script>
+        <script src="scripts/controllers/cardadd.js"></script>
+        <script src="scripts/controllers/applicationcontroller.js"></script>
+        <!-- endbuild -->
+</body>
+</html>

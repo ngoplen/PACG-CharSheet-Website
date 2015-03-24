@@ -1,0 +1,38 @@
+<div class="row">
+	<img src="/images/characters-full/{{character_id}}.jpg" class="col-md-4 visible-lg visible-md">
+	<ul class="list-group col-md-8">
+		<li class="list-group-item">
+			<span><strong>Favored Card Type: </strong>Weapon</span>
+		</li>
+		<li class="list-group-item">
+			<span class="mainskill">Weapon</span>
+			<btn ng-repeat-start="card in weapons" ng-class="{'btn btn-xs':1, 'btn-primary':$first, 'btn-success':card.active==='t', 'btn-default':card.active==='f'}" ng-click="cardFeatToggle('{{card.id}}','{{card.active}}')">{{card.feat}}</btn>
+			<span ng-repeat-end></span>
+		</li>
+		<li class="list-group-item">
+			<span class="mainskill">Spells</span>
+                        <btn ng-repeat-start="card in spells" ng-class="{'btn btn-xs':1, 'btn-primary':$first, 'btn-success':card.active==='t', 'btn-default':card.active==='f'}" ng-click="cardFeatToggle('{{card.id}}','{{card.active}}')">{{card.feat}}</btn>
+                        <span ng-repeat-end></span>
+		</li>
+		<li class="list-group-item">
+			<span class="mainskill">Armor</span>
+			<btn ng-repeat-start="card in armors" ng-class="{'btn btn-xs':1, 'btn-primary':$first, 'btn-success':card.active==='t', 'btn-default':card.active==='f'}" ng-click="cardFeatToggle('{{card.id}}','{{card.active}}')">{{card.feat}}</btn>
+			<span ng-repeat-end></span>
+		</li>
+		<li class="list-group-item">
+			<span class="mainskill">Item</span>
+			<btn ng-repeat-start="card in items" ng-class="{'btn btn-xs':1, 'btn-primary':$first, 'btn-success':card.active==='t', 'btn-default':card.active==='f'}" ng-click="cardFeatToggle('{{card.id}}','{{card.active}}')">{{card.feat}}</btn>
+			<span ng-repeat-end></span>
+		</li>
+		<li class="list-group-item">
+			<span class="mainskill">Ally</span>
+			<btn ng-repeat-start="card in allies" ng-class="{'btn btn-xs':1, 'btn-primary':$first, 'btn-success':card.active==='t', 'btn-default':card.active==='f'}" ng-click="cardFeatToggle('{{card.id}}','{{card.active}}')">{{card.feat}}</btn>
+			<span ng-repeat-end></span>
+		</li>
+		<li class="list-group-item">
+			<span class="mainskill">Blessing</span>
+			<btn ng-repeat-start="card in blessings" ng-class="{'btn btn-xs':1, 'btn-primary':$first, 'btn-success':card.active==='t', 'btn-default':card.active==='f'}" ng-click="cardFeatToggle('{{card.id}}','{{card.active}}')">{{card.feat}}</btn>
+			<span ng-repeat-end></span>
+		</li>
+	</ul>
+</div>

@@ -1,0 +1,25 @@
+<form class="row">
+	<div class="input-group col-md-6">
+		<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+		<input type="text" class="form-control" name="login" placeholder="Username" aria-describedby="basic-addon1" ng-model="formInfo.username" required autofocus />
+	</div>
+
+	<br />
+
+	<div class="input-group col-md-6">
+		<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-star"></span></span>
+		<input type="password" class="form-control" name="password" placeholder="Password" aria-describedby="basic-addon1" ng-model="formInfo.password" required>
+	</div>
+
+	<div class="checkbox">
+		<label>
+			<input type="checkbox" value="remember-me"> Remember me
+		</label>
+	</div>
+	
+	<div class="col-md-6">
+		<button class="btn btn-primary" type="submit" ng-click="login()">Sign in</button>
+		<br />
+		<p>Not a member?  <a ng-href="#/signup">Sign up!</a></p>
+	</div>
+</form>

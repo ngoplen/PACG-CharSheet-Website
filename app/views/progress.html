@@ -1,0 +1,18 @@
+<div class="row">
+	<img src="/images/characters-full/{{character_id}}.jpg" class="visible-lg visible-md col-md-4">
+	<div class="col-md-8">
+		<h1 ng-repeat="AP in AdventurePath"><span ng-class="{'glyphicon':AP.active==='t','glyphicon-ok':AP.active==='t'}"></span> {{AP.name}}</h1>
+		<div ng-repeat="A in Adventure" ng-class="{'row':$odd}">
+			<div class="panel panel-default col-md-6">
+			<!-- Default panel contents -->
+				<div class="panel-heading"><button ng-click="progressUpdate('{{A.id}}')" ng-if="A.active==='f'" class="btn-xs"><span class="glyphicon glyphicon-ok"></span></button><span ng-if="A.active==='t'" class="glyphicon glyphicon-ok"></span> {{A.name}}</div>
+				<!-- List group -->
+				<ul class="list-group">
+					<li ng-repeat="scenario in Scenario" ng-if="scenario.origin==A.origin" class="list-group-item row">
+						<button ng-click="progressUpdate('{{scenario.id}}')" ng-if="scenario.active==='f'" class="btn-xs"><span class="glyphicon glyphicon-ok"></span></button><span ng-if="scenario.active==='t'" class="glyphicon glyphicon-ok"></span> {{scenario.name}}
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

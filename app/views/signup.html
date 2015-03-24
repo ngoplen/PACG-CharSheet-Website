@@ -1,0 +1,53 @@
+<p>Sign up</p>
+
+<form>
+	<div class="row">
+		<span class="col-md-6">
+			<div class="input-group" style="padding-bottom:10px;">
+				<input type="text" class="form-control" name="login" placeholder="Username" ng-model="formInfo.username" required autofocus />
+				<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+			</div>
+			<div style="padding-bottom:10px;">
+				<input type="text" class="form-control" name="first_name" placeholder="First Name" ng-model="formInfo.fName" />
+			</div>
+			<div style="padding-bottom:10px;">
+				<input type="text" class="form-control" name="last_name" placeholder="Last Name" ng-model="formInfo.lName" style="padding-bottom:10px;" />
+			</div>
+			<div class="input-group">
+				<input type="text" class="form-control" name="email" placeholder="Email" ng-model="formInfo.email" required />
+				<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+			</div>
+			<br />
+			<div class="input-group" style="padding-bottom:10px;">
+				<input type="password" class="form-control" name="password" placeholder="Password" ng-model="formInfo.password" required />
+				<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+			</div>
+			<div class="input-group">
+				<input type="password" class="form-control" name="password" placeholder="Confirm Password" ng-model="formInfo.password2" required />
+				<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+			</div>
+			<br />
+			<button type="submit" class="btn" ng-click="createAccount()">Create account</button> <span ng-show="loading"><img src="https://app.userapp.io/img/ajax-loader-transparent.gif"></span>
+		</span>
+		<span class="col-md-6" ng-init="formInfo.set=2">
+			<div class="alert alert-danger" role="alert">Choose a starting character</div>
+			<a ng-repeat="set in base_sets" ng-click="formInfo.set=set.id" href=""><span class="alert alert-warning col-md-4" role="alert">{{set.name}}</span>
+			<div ng-show="formInfo.set===1" class="list-group">
+				<a ng-repeat="character in characters" ng-if="character.base_set_id === 1" href="" ng-click="formInfo.startingCharacter=character.id" class="list-group-item list-group-item-info col-md-3">{{character.name}}</a>
+			</div>
+			<div ng-show="formInfo.set===2" class="list-group">
+				<a ng-repeat="character in characters" ng-if="character.base_set_id === 2" href="" ng-click="formInfo.startingCharacter=character.id" class="list-group-item list-group-item-info col-md-3">{{character.name}}</a>
+			</div>
+			<div ng-show="formInfo.set===3" class="list-group">
+				<a ng-repeat="character in characters" ng-if="character.base_set_id === 3" href="" ng-click="formInfo.startingCharacter=character.id" class="list-group-item list-group-item-info col-md-3">{{character.name}}</a>
+			</div>
+		</span>
+	</div>
+	
+	<p ng-show="error">{{ errormessage }}</p>
+	<!--
+	<span>{{formInfo}}</span>
+	-->
+</form>
+
+<p ng-show="verificationEmailSent">An email has been sent to your inbox. Click on the link to verify your account.</p>

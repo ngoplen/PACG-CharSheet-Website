@@ -1,0 +1,98 @@
+<form>
+	<div class="checkbox">
+		<label><input type="checkbox" ng-model="formInfo.private" value="t">Private (if checked, this card will only show up on your account)</label>
+	</div>		
+	<div class="row">
+		<span class="panel-body col-md-2">
+			<select ng-model="formInfo.set" ng-options="value.id as value.name_short for value in sets" class="form-control" required>
+				<option style="display:none;" value="">Set</option>
+				<option>--</option>
+			</select>
+		</span>
+		<span class="panel-body col-md-2">
+	                <select ng-model="formInfo.type" ng-options="value.type as value.type for value in cardTypes" class="form-control" required>
+	                	<option style="display:none;" value="">Type</option>
+	                        <option>--</option>
+	                </select>
+		</span>
+		<span class="panel-body col-md-8">
+			<input type="text" class="form-control" ng-model="formInfo.cardName" placeholder="Card Name" required />
+		</span>
+	</div>
+	<div class="row">
+		<span class="panel-body col-md-3">
+			<select ng-model="formInfo.origin" ng-options="value.origin as value.origin for value in origin" class="form-control" required>
+				<option style="display:none;" value="">Origin</option>
+	                        <option>--</option>
+	                </select>
+	        </span>
+		<span class="panel-body col-md-3">
+			<select ng-model="formInfo.classDeck" class="form-control">
+				<option style="display:none;" value="">Class Deck</option>
+				<option value="Bard">Bard</option>
+				<option value="Cleric">Cleric</option>
+				<option value="Fighter">Fighter</option>
+				<option value="Paladin">Paladin</option>
+				<option value="Ranger">Ranger</option>
+				<option value="Rogue">Rogue</option>
+				<option value="Sorcerer">Sorcerer</option>
+				<option value="Wizard">Wizard</option>
+			</select>
+		</span>
+		<span class="panel-body col-md-3">
+			<select ng-model="formInfo.promo" class="form-control">
+				<option style="display:none;" value="">Promo</option>
+				<option value="t">Yes</option>
+				<option value="f">No</option>
+			</select>
+		</span>
+		<span class="panel-body col-md-3">
+			<select ng-model="formInfo.loot" class="form-control">
+				<option style="display:none;" value="">Loot</option>
+				<option value="t">Yes</option>
+				<option value="f">No</option>
+			</select>
+		</span>
+	</div>
+	<div class="row">
+		<span class="panel-body col-md-4">
+			<select ng-model="formInfo.attribute1" ng-options="value.id as value.attribute for value in attribute" class="form-control">
+	                        <option style="display:none;" value="">1st Attribute</option>
+	                        <option>--</option>
+	                </select>
+		</span>
+		<span class="panel-body col-md-4">
+	                <select ng-model="formInfo.attribute2" ng-options="value.id as value.attribute for value in attribute" class="form-control">
+	                        <option style="display:none;" value="">2nd Attribute</option>
+	                        <option>--</option>
+	                </select>
+	        </span>
+		<span class="panel-body col-md-4">
+	                <select ng-model="formInfo.attribute3" ng-options="value.id as value.attribute for value in attribute" class="form-control">
+	                        <option style="display:none;" value="">3rd Attribute</option>
+	                        <option>--</option>
+	                </select>
+	        </span>
+	</div>
+	<div class="row">
+		<span class="panel-body col-md-4">
+	                <select ng-model="formInfo.attribute4" ng-options="value.id as value.attribute for value in attribute" class="form-control">
+	                        <option style="display:none;" value="">4th Attribute</option>
+	                        <option>--</option>
+	                </select>
+	        </span>
+	<span class="panel-body col-md-4">
+	                <select ng-model="formInfo.attribute5" ng-options="value.id as value.attribute for value in attribute" class="form-control">
+	                        <option style="display:none;" value="">5th Attribute</option>
+	                        <option>--</option>
+	                </select>
+	        </span>
+	<span class="panel-body col-md-4">
+	                <select ng-model="formInfo.attribute6" ng-options="value.id as value.attribute for value in attribute" class="form-control">
+	                        <option style="display:none;" value="">6th Attribute</option>
+	                        <option>--</option>
+	                </select>
+	        </span>
+	</div>
+	<button class="btn btn-primary" ng-click="addNewCard()">Submit</button>
+</form>

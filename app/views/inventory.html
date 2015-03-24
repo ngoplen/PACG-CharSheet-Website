@@ -1,0 +1,150 @@
+<div class="row">
+	<img src="/images/characters-full/{{character_id}}.jpg" class="visible-lg visible-md col-md-4">
+	<div class="col-md-8">
+		<div class="row">
+			<div class="panel panel-default col-md-6">
+			<!-- Default panel contents -->
+				<div class="panel-heading">
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-plus"></span></span>
+						<select ng-model="weaponsADD" ng-options="value.id as value.name for value in weaponsALL" ng-change="inventoryAdjust('weapon','inventoryAdd')" class="form-control">
+							<option style="display:none;" value="">Weapons</option>
+							<option>--</option>
+						</select>
+					</div>
+				</div>
+				<!-- List group -->
+				<ul class="list-group">
+					<li ng-repeat="card in weapons" class="list-group-item">
+						<div class="row">
+							<span class="col-md-10">({{card.origin}}) {{card.name}}</span>
+							<button ng-click="inventoryAdjust('{{card.id}}','inventoryDelete')" class="btn btn-xs">
+								<span class="glyphicon glyphicon-remove"></span><!-- glyphicon-remove maybe? -->
+							</button>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="panel panel-default col-md-6">
+			<!-- Default panel contents -->
+				<div class="panel-heading">
+					<div class="input-group">
+	                                	<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-plus"></span></span>
+		                                <select ng-model="armorsADD" ng-options="value.id as value.name for value in armorsALL" ng-change="inventoryAdjust('armor','inventoryAdd')" class="form-control">
+							<option style="display:none;" value="">Armors</option>
+                                                               <option>--</option>
+                                                </select>
+					</div>
+				</div>
+				<!-- List group -->
+				<ul class="list-group">
+                                        <li ng-repeat="card in armors" class="list-group-item">
+                                                <div class="row">
+                                                        <span class="col-md-10">({{card.origin}}) {{card.name}}</span>
+                                                        <button ng-click="inventoryAdjust('{{card.id}}','inventoryDelete')" class="btn btn-xs">
+                                                                <span class="glyphicon glyphicon-remove"></span><!-- glyphicon-remove maybe? -->
+                                                        </button>
+                                                </div>
+                                        </li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="panel panel-default col-md-6">
+			<!-- Default panel contents -->
+				<div class="panel-heading">
+                        		<div class="input-group">
+                                        	<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-plus"></span></span>
+                                                <select ng-model="spellsADD" ng-options="value.id as value.name for value in spellsALL" ng-change="inventoryAdjust('spell','inventoryAdd')" class="form-control">
+                                                	<option style="display:none;" value="">Spells</option>
+                                                        <option>--</option>
+                                                </select>
+                                        </div>
+				</div>
+				<!-- List group -->
+				<ul class="list-group">
+					<li ng-repeat="card in spells" class="list-group-item">
+	                                      <div class="row">
+	                                              <span class="col-md-10">({{card.origin}}) {{card.name}}</span>
+	                                              <button ng-click="inventoryAdjust('{{card.id}}','inventoryDelete')" class="btn btn-xs">
+	                                                      <span class="glyphicon glyphicon-remove"></span><!-- glyphicon-remove maybe? -->
+	                                              </button>
+	                                      </div>
+	                              </li>
+				</ul>
+			</div>
+			<div class="panel panel-default col-md-6">
+			<!-- Default panel contents -->
+				<div class="panel-heading">
+                                	<div class="input-group">
+                                        	<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-plus"></span></span>
+                                                <select ng-model="itemsADD" ng-options="value.id as value.name for value in itemsALL" ng-change="inventoryAdjust('item','inventoryAdd')" class="form-control">
+                                                	<option style="display:none;" value="">Items</option>
+                                                        <option>--</option>
+                                                </select>
+                                        </div>				
+				</div>
+				<!-- List group -->
+				<ul class="list-group">
+                                        <li ng-repeat="card in items" class="list-group-item">
+                                                <div class="row">
+                                                        <span class="col-md-10">({{card.origin}}) {{card.name}}</span>
+                                                        <button ng-click="inventoryAdjust('{{card.id}}','inventoryDelete')" class="btn btn-xs">
+                                                                <span class="glyphicon glyphicon-remove"></span><!-- glyphicon-remove maybe? -->
+                                                        </button>
+                                                </div>
+                                        </li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+                        <div class="panel panel-default col-md-6">
+                        <!-- Default panel contents -->
+                                <div class="panel-heading">
+                                        <div class="input-group">
+                                        	<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-plus"></span></span>
+                                                <select ng-model="alliesADD" ng-options="value.id as value.name for value in alliesALL" ng-change="inventoryAdjust('ally','inventoryAdd')" class="form-control">
+                                                	<option style="display:none;" value="">Allies</option>
+                                                        <option>--</option>
+                                                </select>
+                                        </div>                                
+                                </div>
+                                <!-- List group -->
+                                <ul class="list-group">
+                                        <li ng-repeat="card in allies" class="list-group-item">
+                                                <div class="row">
+                                                        <span class="col-md-10">({{card.origin}}) {{card.name}}</span>
+                                                        <button ng-click="inventoryAdjust('{{card.id}}','inventoryDelete')" class="btn btn-xs">
+                                                                <span class="glyphicon glyphicon-remove"></span><!-- glyphicon-remove maybe? -->
+                                                        </button>
+                                                </div>
+                                        </li>
+                                </ul>
+                        </div>
+                        <div class="panel panel-default col-md-6">
+                        <!-- Default panel contents -->
+                                <div class="panel-heading">
+                                	<div class="input-group">
+                                        	<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-plus"></span></span>
+                                                <select ng-model="blessingsADD" ng-options="value.id as value.name for value in blessingsALL" ng-change="inventoryAdjust('blessing','inventoryAdd')" class="form-control">
+                                                	<option style="display:none;" value="">Blessings</option>
+                                                        <option>--</option>
+                                                </select>
+                                        </div>
+                                </div>
+                                <!-- List group -->
+                                <ul class="list-group">
+                                        <li ng-repeat="card in blessings" class="list-group-item">
+                                                <div class="row">
+                                                        <span class="col-md-10">({{card.origin}}) {{card.name}}</span>
+                                                        <button ng-click="inventoryAdjust('{{card.id}}','inventoryDelete')" class="btn btn-xs">
+                                                                <span class="glyphicon glyphicon-remove"></span><!-- glyphicon-remove maybe? -->
+                                                        </button>
+                                                </div>
+                                        </li>
+                                </ul>
+                        </div>
+                </div>
+	</div>
+</div>

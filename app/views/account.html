@@ -1,0 +1,52 @@
+<h2>Account info</h2>
+<h3>Active Characters</h3>
+<div class="row">
+	<div ng-repeat="character in accountCharactersActive" class="col-md-10 panel panel-default">
+		<div class="panel-heading">({{character.base_set}}) {{character.name}}</div>
+		<table class="table">
+			<tr>
+				<td><input type="text" class="form-control" placeholder="Custom character name" value="{{character.customName}}" />
+				<td><input type="text" class="form-control" placeholder="Sidemark" value="{{character.sidemark}}" /></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<h3>Retired Characters</h3>
+<div class="row">
+        <div ng-repeat="character in accountCharactersInactive" class="col-md-10 panel panel-default">
+                <div class="panel-heading">({{character.base_set}}) {{character.name}}</div>
+                <table class="table">
+                        <tr>
+                                <td><input type="text" class="form-control" placeholder="Custom character name" value="{{character.customName}}" />
+                                <td><input type="text" class="form-control" placeholder="Sidemark" value="{{character.sidemark}}" /></td>
+                        </tr>
+                </table>
+        </div>
+</div>
+
+<h3>Add a Character</h3>
+<div class="row">
+	<span class="col-md-6" ng-init="formInfo.set=2">
+                 <a ng-repeat="set in base_sets" ng-click="formInfo.set=set.id" href=""><span class="alert alert-warning col-md-4" role="alert">{{set.name}}</span>
+                 <div ng-show="formInfo.set===1" class="list-group">
+                         <a ng-repeat="character in characters" ng-if="character.base_set_id === 1" href="" ng-click="newCharacter('{{character.id}}')" class="list-group-item list-group-item-info col-md-3">{{character.name}}</a>
+                 </div>
+                 <div ng-show="formInfo.set===2" class="list-group">
+                         <a ng-repeat="character in characters" ng-if="character.base_set_id === 2" href="" ng-click="newCharacter('{{character.id}}')" class="list-group-item list-group-item-info col-md-3">{{character.name}}</a>
+                 </div>
+                 <div ng-show="formInfo.set===3" class="list-group">
+                         <a ng-repeat="character in characters" ng-if="character.base_set_id === 3" href="" ng-click="newCharacter('{{character.id}}')" class="list-group-item list-group-item-info col-md-3">{{character.name}}</a>
+                 </div>
+         </span>
+</div>
+
+
+
+
+<div class="row" id="accountInfo"></div>
+
+
+<div class="row" id="options">
+
+</div>
